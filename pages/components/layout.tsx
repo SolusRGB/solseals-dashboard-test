@@ -7,32 +7,33 @@ import {
   ChartBarIcon,
   FolderIcon,
   HomeIcon,
-  InboxIcon,
   MenuAlt2Icon,
-  UsersIcon,
+  DocumentTextIcon,
   XIcon,
+  RssIcon,
+  BadgeCheckIcon,
 } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
+  { name: 'Rankings', href: '#', icon: ChartBarIcon, current: false },
   { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+  { name: 'Upcoming', href: '#', icon: CalendarIcon, current: false },
+  { name: 'Reports', href: '#', icon: DocumentTextIcon, current: false },
+  { name: 'Blog', href: '#', icon: RssIcon, current: false },
+  { name: 'Request Assessment', href: '#', icon: BadgeCheckIcon, current: false },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Connect Wallet', href: '#' },
+  { name: 'Support', href: '#' },
 ]
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -68,7 +69,7 @@ export default function Example() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-700">
+              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-blue-700">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -103,11 +104,11 @@ export default function Example() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600',
+                          item.current ? 'bg-blue-800 text-white' : 'text-blue-100 hover:bg-blue-600',
                           'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                         )}
                       >
-                        <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
+                        <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-blue-300" aria-hidden="true" />
                         {item.name}
                       </a>
                     ))}
@@ -124,7 +125,7 @@ export default function Example() {
         {/* Static sidebar for desktop */}
         <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
+          <div className="flex flex-col flex-grow pt-5 bg-gradient-to-br from-blue-800  to-blue-600 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
               <img
                 className="h-8 w-auto"
@@ -139,11 +140,11 @@ export default function Example() {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600',
+                      item.current ? 'bg-blue-800 text-white' : 'text-blue-100 hover:bg-blue-600',
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                     )}
                   >
-                    <item.icon className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
+                    <item.icon className="mr-3 flex-shrink-0 h-6 w-6 text-blue-200" aria-hidden="true" />
                     {item.name}
                   </a>
                 ))}
@@ -155,7 +156,7 @@ export default function Example() {
           <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
             <button
               type="button"
-              className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+              className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 md:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -184,7 +185,7 @@ export default function Example() {
               <div className="ml-4 flex items-center md:ml-6">
                 <button
                   type="button"
-                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -193,7 +194,7 @@ export default function Example() {
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>
-                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
