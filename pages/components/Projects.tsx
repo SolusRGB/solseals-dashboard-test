@@ -35,7 +35,7 @@ const dogetrack = [
 export default function Example() {
   return (
     // Above Table
-    <div className="px-4 sm:px-7 lg:px-8">
+    <div className="px-4 sm:px-2 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-white">Project Reports</h1>
@@ -61,7 +61,7 @@ export default function Example() {
 
       {/* Main Table */}
       <div className="mt-8 flex flex-col">
-        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-9 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             {/* BELOW HIDES TABLE ON LARGER SCREEN AND HIDES ON MOBILE ONES */}
             <div className="hidden overflow-auto rounded-lg shadow md:block">
@@ -256,27 +256,60 @@ export default function Example() {
           </div>
         </div>
 
-        {/* MOBILE */}
+        {/* MOBILE ADD TO OWN COMPONENT LATER ADJUST WIDTH FOR MOBILE */}
         {/* project 1 */}
         <div className="grid-cols1 grid gap-4 md:hidden">
           <div className="space-y-2 rounded-lg bg-sky-900 p-4 shadow">
             <div className="flex items-center space-x-2 text-sm">
-              <div>
-                <a
-                  href="#"
-                  className="font-semibold tracking-wider text-sky-100"
-                >
-                  Project Name
-                </a>
-              </div>
-              <div className="text-purple-500">Risk</div>
-              <span className="inline-flex rounded-full bg-green-200 px-2 text-xs font-semibold leading-5 text-green-800">
-                Low
-              </span>
+              {bananos.map((project) => (
+                <tr key={project.twitter}>
+                  <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 flex-shrink-0">
+                        <img
+                          className="h-10 w-10 rounded-full"
+                          src={project.image}
+                          alt=""
+                        />
+                      </div>
+                      <div className="ml-4">
+                        <div className="font-medium tracking-wider text-yellow-300">
+                          {project.name}
+                        </div>
+                        <div className="text-sky-100">{project.twitter}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <div className="font-semibold tracking-wide text-yellow-300">
+                      {project.token}
+                    </div>
+                    <div className="font-semibold tracking-wide text-sky-100">
+                      {project.blockchain}
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <span className="inline-flex rounded-full bg-green-200 px-2 text-xs font-semibold leading-5 text-green-800">
+                      Low
+                    </span>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4 text-sm font-semibold tracking-wide text-yellow-300">
+                    {project.utility}
+                  </td>
+                  <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                    <a
+                      href="#"
+                      className="font-semibold tracking-wider text-sky-100 hover:text-sky-900"
+                    >
+                      Website
+                      <span className="sr-only">, {project.name}</span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
             </div>
-            <div className="text-sm text-red-700">description</div>
-            <div className="text-sm font-medium text-yellow-300">200£</div>
           </div>
+
           {/* project 2 */}
           <div className="grid-cols1 grid gap-4 md:hidden">
             <div className="space-y-2 rounded-lg bg-sky-900 p-4 shadow">
