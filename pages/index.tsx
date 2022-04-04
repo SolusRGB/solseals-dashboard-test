@@ -15,6 +15,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline'
 import { DocumentReportIcon, SearchIcon } from '@heroicons/react/solid'
+import Projects from './components/Projects'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -39,14 +40,7 @@ export default function Example() {
 
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
+      {/* SIDE BAR WHEN SHRUNK */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
@@ -70,7 +64,7 @@ export default function Example() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-700">
+              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-sky-500">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -105,11 +99,11 @@ export default function Example() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600',
+                          item.current ? 'bg-sky-800 text-white' : 'text-indigo-100 hover:bg-sky-700',
                           'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                         )}
                       >
-                        <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
+                        <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-100" aria-hidden="true" />
                         {item.name}
                       </a>
                     ))}
@@ -126,7 +120,7 @@ export default function Example() {
         {/* Static sidebar for desktop */}
         <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-col flex-grow pt-5 bg-blue-900 overflow-y-auto">
+          <div className="flex flex-col flex-grow pt-5 bg-sky-500 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
               <img
                 className="h-8 w-auto"
@@ -141,11 +135,11 @@ export default function Example() {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      item.current ? 'bg-blue-500 text-white' : 'text-indigo-100 hover:bg-blue-400',
+                      item.current ? 'bg-sky-800 text-white' : 'text-indigo-100 hover:bg-sky-700',
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                     )}
                   >
-                    <item.icon className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
+                    <item.icon className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-100" aria-hidden="true" />
                     {item.name}
                   </a>
                 ))}
@@ -157,7 +151,7 @@ export default function Example() {
           <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
             <button
               type="button"
-              className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+              className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500 md:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -183,10 +177,12 @@ export default function Example() {
                   </div>
                 </form>
               </div>
+
+              {/* BELL ICON TOP RIGHT */}
               <div className="ml-4 flex items-center md:ml-6">
                 <button
                   type="button"
-                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -195,7 +191,7 @@ export default function Example() {
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>
-                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -242,11 +238,13 @@ export default function Example() {
                 <h1 className="text-2xl font-bold shadow-stone-900 text-gray-900">DYOR Dashboard</h1>
               </div>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+
                 {/* Replace with your content */}
                 <div className="py-4">
-                  <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
+                  <Projects />
                 </div>
                 {/* /End replace */}
+
               </div>
             </div>
           </main>
