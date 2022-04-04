@@ -8,7 +8,7 @@ export default function Rankings() {
       <Head>
         <title>SolSeals Dashboard</title>
       </Head>
-      <Layout></Layout>
+      <Layout / >
     </>
   )
 }
