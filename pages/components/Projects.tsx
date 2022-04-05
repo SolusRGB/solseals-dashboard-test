@@ -256,6 +256,8 @@ export default function Example() {
           </div>
         </div>
 
+        {/* test */}
+
         {/* MOBILE ADD TO OWN COMPONENT LATER ADJUST WIDTH FOR MOBILE */}
         {/* project 1 */}
         <div className="grid-cols1 grid gap-4 md:hidden">
