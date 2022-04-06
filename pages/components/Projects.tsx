@@ -35,7 +35,7 @@ const dogetrack = [
 export default function Example() {
   return (
     // Above Table
-    <div className="px-4 sm:px-2 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-white">Project Reports</h1>
@@ -64,7 +64,7 @@ export default function Example() {
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-9 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             {/* BELOW HIDES TABLE ON LARGER SCREEN AND HIDES ON MOBILE ONES */}
-            <div className="hidden overflow-auto rounded-lg shadow md:block">
+            <div className="hidden overflow-auto rounded-lg max-w-7xl shadow md:block">
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
                   <tr>
