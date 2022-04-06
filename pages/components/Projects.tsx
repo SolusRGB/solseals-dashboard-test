@@ -32,7 +32,7 @@ const dogetrack = [
   },
 ]
 
-export default function Example() {
+const Sidebar = () =>  {
   return (
     // Above Table
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -422,3 +422,5 @@ export default function Example() {
     </div>
   )
 }
+
+export default Sidebar

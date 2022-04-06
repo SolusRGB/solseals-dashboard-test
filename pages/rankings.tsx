@@ -1,14 +1,12 @@
-import Head from 'next/head'
-import Layout from './components/layout'
-
-export default function Rankings() {
-
-  return (
-    <>
-      <Head>
-        <title>SolSeals Dashboard</title>
-      </Head>
-      <Layout / >
-    </>
-  )
+const Rankings = () => {
+    return ( 
+        <div>
+            <h1>About</h1>
+            <p>
+                ldqdqwdt.
+            </p>
+        </div>
+     );
 }
+ 
+export default Rankings;
