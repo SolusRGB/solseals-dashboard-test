@@ -32,7 +32,7 @@ const dogetrack = [
   },
 ]
 
-const Sidebar = () =>  {
+const projects = () =>  {
   return (
     // Above Table
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -423,4 +423,4 @@ const Sidebar = () =>  {
   )
 }
 
-export default Sidebar
+export default projects

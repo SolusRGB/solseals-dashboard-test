@@ -1,32 +1,28 @@
-
-
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   BellIcon,
-  BookOpenIcon,
   CalendarIcon,
   ChartBarIcon,
   FolderIcon,
-  GlobeAltIcon,
   HomeIcon,
   InboxIcon,
   MenuAlt2Icon,
   UsersIcon,
   XIcon,
 } from '@heroicons/react/outline'
-import { DocumentReportIcon, SearchIcon } from '@heroicons/react/solid'
+import { SearchIcon } from '@heroicons/react/solid'
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
-  { name: 'Rankings', href: '/rankings', icon: GlobeAltIcon, current: false },
-  { name: 'Projects', href: '/projects', icon: FolderIcon, current: false },
-  { name: 'Upcoming', href: '/upcoming', icon: CalendarIcon, current: false },
-  { name: 'Reports', href: '/reports', icon: DocumentReportIcon, current: false },
-  { name: 'Request Assessment', href: '/request-assessments', icon: BookOpenIcon, current: false },
+  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+  { name: 'Team', href: '#', icon: UsersIcon, current: false },
+  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
+  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
 ]
 const userNavigation = [
-  { name: 'Your Wallet', href: '#' },
+  { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#' },
 ]
@@ -35,13 +31,19 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-
-const Sidebar = () => {
+export default function Sidebar2() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <>
-      {/* SIDE BAR WHEN SHRUNK */}
+      {/*
+        This example requires updating your template:
+
+        ```
+        <html class="h-full bg-gray-100">
+        <body class="h-full">
+        ```
+      */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
@@ -65,7 +67,7 @@ const Sidebar = () => {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-sky-500">
+              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-700">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -89,8 +91,8 @@ const Sidebar = () => {
                 <div className="flex-shrink-0 flex items-center px-4">
                   <img
                     className="h-8 w-auto"
-                    src="/dashboard-logo.png"
-                    alt="SolSeals Dashboard"
+                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg"
+                    alt="Workflow"
                   />
                 </div>
                 <div className="mt-5 flex-1 h-0 overflow-y-auto">
@@ -100,11 +102,11 @@ const Sidebar = () => {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-sky-800 text-white' : 'text-indigo-100 hover:bg-sky-700',
+                          item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600',
                           'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                         )}
                       >
-                        <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-100" aria-hidden="true" />
+                        <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
                         {item.name}
                       </a>
                     ))}
@@ -121,27 +123,27 @@ const Sidebar = () => {
         {/* Static sidebar for desktop */}
         <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-col flex-grow pt-5 bg-sky-500 overflow-y-auto">
+          <div className="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
               <img
                 className="h-8 w-auto"
-                src="/dashboard-logo.png"
-                alt="SolSeals Dashboard"
+                src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg"
+                alt="Workflow"
               />
             </div>
             <div className="mt-5 flex-1 flex flex-col">
               <nav className="flex-1 px-2 pb-4 space-y-1">
-                {navigation.map((navigation) => (
+                {navigation.map((item) => (
                   <a
-                    key={navigation.name}
-                    href={navigation.href}
+                    key={item.name}
+                    href={item.href}
                     className={classNames(
-                      navigation.current ? 'bg-sky-800 text-white' : 'text-indigo-100 hover:bg-sky-700',
+                      item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600',
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                     )}
                   >
-                    <navigation.icon className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-100" aria-hidden="true" />
-                    {navigation.name}
+                    <item.icon className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
+                    {item.name}
                   </a>
                 ))}
               </nav>
@@ -152,7 +154,7 @@ const Sidebar = () => {
           <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
             <button
               type="button"
-              className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500 md:hidden"
+              className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -178,12 +180,10 @@ const Sidebar = () => {
                   </div>
                 </form>
               </div>
-
-              {/* BELL ICON TOP RIGHT */}
               <div className="ml-4 flex items-center md:ml-6">
                 <button
                   type="button"
-                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -192,11 +192,11 @@ const Sidebar = () => {
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>
-                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="/solus.png"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
                     </Menu.Button>
@@ -227,18 +227,28 @@ const Sidebar = () => {
                         </Menu.Item>
                       ))}
                     </Menu.Items>
-
-                  
-
                   </Transition>
                 </Menu>
               </div>
             </div>
           </div>
+
+          <main>
+            <div className="py-6">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+              </div>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                {/* Replace with your content */}
+                <div className="py-4">
+                  <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
+                </div>
+                {/* /End replace */}
+              </div>
+            </div>
+          </main>
         </div>
       </div>
     </>
   )
 }
-
-export default Sidebar;
